@@ -8,10 +8,16 @@ def get_all_students():
     return Student.objects.all()
 
 
+def get_all_courses():
+    return Course.objects.all()
+
+
 def index(request):
     students = get_all_students()
+    courses = get_all_courses()
     context = {
         'students_list': students,
+        'course_list': courses,
     }
     return render(request, 'StudentWeb/index.html', context)
 
@@ -28,4 +34,15 @@ def add_student(request):
     #     birth_date=dob,
     #     contact_number=phone
     # ).save()
+    return HttpResponseRedirect("/")
+
+
+def add_course(request):
+    req_course_name = request.POST["course_name"]
+    req_course_details = request.POST["course_details"]
+    print(request, request.POST)
+    Course(
+        course_name=req_course_name,
+        course_details=req_course_details,
+    ).save()
     return HttpResponseRedirect("/")
