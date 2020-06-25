@@ -14,5 +14,7 @@ class Course(models.Model):
 
 
 class StudentCourses(models.Model):
+    class Meta:
+        unique_together = ['student', 'course']
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)

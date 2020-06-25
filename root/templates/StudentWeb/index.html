@@ -8,14 +8,19 @@
   </br>
   </br>
   </br>
+
   <a href="/add_student">Add New Student</a>
   </br>
   <a href="/add_course">Add New Course</a>
   </br>
+  <a href="/subscribe_courses">Subscribe a Course</a>
+  </br>
   </br>
   </br>
   <hr>
-  <div style="width: 40%; float: left;margin-right:10px">
+
+  {# -----  Student Table ----- #}
+  <div style="width: 30%; float: left;margin-right:10px">
   <table style="width: 90%; border: 1px solid black" >
     <tr>
       <th style="text-align: center">Firstname</th>
@@ -29,7 +34,9 @@
     {% endfor %}
   </table>
   </div>
-  <div style="width: 40%; float: left">
+
+  {# -----  Courses Table ----- #}
+  <div style="width: 30%; float: left">
   <table style="width: 90%; border: 1px solid black">
     <tr>
       <th style="text-align: center">Course name</th>
@@ -39,6 +46,23 @@
       <tr>
         <td style="text-align: center">{{ course.course_name }}</td>
         <td style="text-align: center">{{ course.course_details }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  </div>
+
+
+  {# -----  Subscription Table ----- #}
+  <div style="width: 30%; float: left">
+  <table style="width: 90%; border: 1px solid black">
+    <tr>
+      <th style="text-align: center">Student name</th>
+      <th style="text-align: center">Course Name</th>
+    </tr>
+    {%for subscribe in subscription_list %}
+      <tr>
+        <td style="text-align: center">{{ subscribe.student.first_name }}</td>
+        <td style="text-align: center">{{ subscribe.course.course_name }}</td>
       </tr>
     {% endfor %}
   </table>
