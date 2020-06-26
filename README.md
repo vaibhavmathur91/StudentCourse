@@ -48,7 +48,7 @@ Output Walkthrough:
            
         Window#4:
             
-            add_subscription.html
+            subscribe_courses.html
             
                 form is being shown with 2 dropdown  selections  first(student) and second(course)                
                 on click of submit POST call is made
