@@ -17,3 +17,40 @@ Please check below Code files :
 
 Please check below path for Static(Html) files: 
   1) StudentCourse/tree/master/root/templates/StudentWeb
+
+
+Output Walkthrough:
+
+        Window#1:
+
+            index.html :
+            
+                3 tables are shown All student-data,  All courses  and  All subscriptions
+
+                3 links to add new (student, course, subscription)
+
+        Window#2:
+            
+            add_student.html
+            
+                form is being shown (All fields are mandetory)
+                
+                on click of submit POST call is made
+                
+        Window#3:
+            
+            add_course.html
+            
+                form is being shown (All fields are mandetory)
+                
+                on click of submit POST call is made
+                
+           
+        Window#4:
+            
+            add_subscription.html
+            
+                form is being shown with 2 dropdown  selections  first(student) and second(course)                
+                on click of submit POST call is made
+                
+        
