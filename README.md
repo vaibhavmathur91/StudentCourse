@@ -3,9 +3,10 @@ Sage
 
 Project Tech Used: 
   Framework : Django
+  
   basic language: python3.6 , htmls, css
-  browser: chrome
-
+  
+  
 Please check below Code files :
   1) /StudentCourse/tree/master/root/StudentWeb/models.py
   2) /StudentCourse/tree/master/root/StudentWeb/urls.py
