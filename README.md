@@ -14,6 +14,8 @@ Please check below Code files :
   1) /StudentCourse/tree/master/root/StudentWeb/models.py
   2) /StudentCourse/tree/master/root/StudentWeb/urls.py
   3) /StudentCourse/tree/master/root/StudentWeb/views.py
+  
+Note:  Please check above urls.py file and then follow the corresponding view method  for each url
 
 Please check below path for Static(Html) files: 
   1) StudentCourse/tree/master/root/templates/StudentWeb
