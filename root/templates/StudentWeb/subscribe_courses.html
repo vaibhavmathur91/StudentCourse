@@ -21,7 +21,7 @@
     <select id="course" name="course" required>
     {% for course in course_list %}
     <option value="{{ course.id }}">
-      {{ course.course_name }} {{ course.course_details }}
+      {{ course.course_name }} : {{ course.course_details |truncatewords:10}}
     </option>
     {% endfor %}
     </select>
