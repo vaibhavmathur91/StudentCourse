@@ -3,11 +3,11 @@ Sage
 
 Project Tech Used: 
 
-  Framework : Django
+    Framework : Django
   
-  basic language: python3.6 , htmls, css
+    basic language: python3.6 , htmls, css
   
-  database : sqlite3
+    database : sqlite3
   
   
 Please check below Code files :
