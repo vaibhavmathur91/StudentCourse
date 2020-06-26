@@ -1,5 +1,5 @@
 # StudentCourse
-Sage
+
 
 Project Tech Used: 
 
