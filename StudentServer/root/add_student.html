@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Student</title>
+</head>
+<body>
+
+
+  <form action="post_add_student" method="post">
+  <!--{% csrf_token %}-->
+
+    <label> Firstname </label>
+    <input type="text" name="first_name" size="50" required/> <br> <br>
+    <label> Lastname: </label>
+    <input type="text" name="last_name" size="50" required/> <br> <br>
+    <label>Phone :</label>
+    <input type="text" name="number" size="15" required/> <br> <br>
+    <label>DOB :</label>
+    <input type="date" name="date_of_birth" required/> <br> <br>
+    <input type="submit">
+  </form>
+  </br>
+
+</body>
+</html>
