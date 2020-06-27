@@ -5,15 +5,14 @@ from constants import DATABASE_PATH
 
 class StudentDatabase:
 
-    def create_connection(self, db_files):
-        """ create a database connection to the SQLite database
-            specified by db_file
+    def create_connection(self, db_file):
+        """ create a database connection to the SQLite database specified by db_file
         :param db_file: database file name
         :return: Connection object or None
         """
         connection = None
         try:
-            connection = sqlite3.connect(db_files)
+            connection = sqlite3.connect(db_file)
             return connection
         except Error as e:
             print(e)
@@ -23,7 +22,6 @@ class StudentDatabase:
     def update_student(self, task):
         """
         add a student
-        :param conn:
         :param task:
         :return:
         """
@@ -32,19 +30,12 @@ class StudentDatabase:
         cur = conn.cursor()
         cur.execute(sql, task)
         conn.commit()
-        # print(cur.execute("SELECT name FROM sqlite_master WHERE type='table';"))
-        # print(cur.fetchall())
-        # print(cur.execute("SELECT * From 'StudentWeb_student'"))
-        # print(cur.fetchall())
-
         return cur.lastrowid
 
     def update_course(self, task):
         """
         add a course
-        :param conn:
         :param task:
-        :return:
         """
         conn = self.create_connection(DATABASE_PATH)
         sql = ''' INSERT INTO StudentWeb_course(course_name,course_details) VALUES(?,?) '''
@@ -56,9 +47,7 @@ class StudentDatabase:
     def update_subscription(self, task):
         """
         add a course to a student
-        :param conn:
         :param task:
-        :return:
         """
         conn = self.create_connection(DATABASE_PATH)
         sql = ''' INSERT INTO StudentWeb_studentcourses(course_id,student_id) VALUES(?,?) '''
@@ -70,9 +59,6 @@ class StudentDatabase:
     def get_students(self):
         """
         Get all students
-        :param conn:
-        :param task:
-        :return:
         """
         conn = self.create_connection(DATABASE_PATH)
         sql = ''' SELECT * FROM StudentWeb_student'''
@@ -84,23 +70,16 @@ class StudentDatabase:
     def get_courses(self):
         """
         Get all course
-        :param conn:
-        :param task:
-        :return:
         """
         conn = self.create_connection(DATABASE_PATH)
         sql = ''' SELECT * FROM StudentWeb_course'''
         cur = conn.cursor()
         cur.execute(sql)
-        # conn.commit()
         return cur.fetchall()
 
     def get_subscriptions(self):
         """
-        Get all course
-        :param conn:
-        :param task:
-        :return:
+        Get all subscriptions
         """
         conn = self.create_connection(DATABASE_PATH)
         sql = '''
@@ -110,5 +89,4 @@ class StudentDatabase:
         '''
         cur = conn.cursor()
         cur.execute(sql)
-        # conn.commit()
         return cur.fetchall()

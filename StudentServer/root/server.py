@@ -15,9 +15,15 @@ class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
         self.end_headers()
 
     def do_GET(self):
+        """
+        GET call service
+        :return: HTML page for requested call
+        """
+        #  --------- Home Page --------------
         if self.path == '/':
             self.path = 'index.html'
             return http_server.SimpleHTTPRequestHandler.do_GET(self)
+        #  --------- Student Details html Page --------------
         elif self.path == '/show_students':
             self.send_response(200)
             self.send_header("Content-type", "text/html")
@@ -34,6 +40,7 @@ class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
             result = HTML_STUDENT_START + HTML_STUDENT_MID + HTML_STUDENT_END
             self.wfile.write(bytes(result, "utf8"))
             return
+        #  --------- Courses Details html Page --------------
         elif self.path == '/show_courses':
             self.send_response(200)
             self.send_header("Content-type", "text/html")
@@ -50,6 +57,7 @@ class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
             result = HTML_COURSE_START + HTML_COURSE_MID + HTML_COURSE_END
             self.wfile.write(bytes(result, "utf8"))
             return
+        #  --------- Subscription Details html Page --------------
         elif self.path == '/show_subscriptions':
             self.send_response(200)
             self.send_header("Content-type", "text/html")
@@ -66,12 +74,16 @@ class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
             result = HTML_SUBSCRIPTION_START + HTML_SUBSCRIPTION_MID + HTML_SUBSCRIPTION_END
             self.wfile.write(bytes(result, "utf8"))
             return
+
+        #  --------- Add a new Student Form Page --------------
         elif self.path == '/add_student':
             self.path = 'add_student.html'
             return http_server.SimpleHTTPRequestHandler.do_GET(self)
+        #  --------- Add a new Course Form Page --------------
         elif self.path == '/add_course':
             self.path = 'add_course.html'
             return http_server.SimpleHTTPRequestHandler.do_GET(self)
+        #  --------- Add a new course to student (Subscribe) Form Page --------------
         elif self.path == '/subscribe_courses':
             self.send_response(200)
             self.send_header("Content-type", "text/html")
@@ -97,6 +109,12 @@ class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
             self.send_error(404, "File not found")
 
     def do_POST(self):
+        """
+        POST Call service
+        :return: HTML page for requested call
+        """
+
+        #  --------- service to add a new student --------------
         if self.path == '/post_add_student':
             content_len = int(self.headers['Content-Length'])
             post_body = (self.rfile.read(content_len)).decode('utf-8')
@@ -109,6 +127,7 @@ class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
             print("POSt", self.path)
             self.path = ""
             return http_server.SimpleHTTPRequestHandler.do_GET(self)
+        #  --------- service to add a new course --------------
         elif self.path == '/post_add_course':
             content_len = int(self.headers['Content-Length'])
             post_body = (self.rfile.read(content_len)).decode('utf-8')
@@ -120,6 +139,7 @@ class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
             print("POSt", self.path)
             self.path = ""
             return http_server.SimpleHTTPRequestHandler.do_GET(self)
+        #  --------- service to get all students and courses details  --------------
         elif self.path == '/post_add_course':
             content_len = int(self.headers['Content-Length'])
             post_body = (self.rfile.read(content_len)).decode('utf-8')
@@ -131,6 +151,7 @@ class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
             print("POSt", self.path)
             self.path = ""
             return http_server.SimpleHTTPRequestHandler.do_GET(self)
+        #  --------- service to add a new subscription --------------
         elif self.path == '/post_subscribe_courses':
             content_len = int(self.headers['Content-Length'])
             post_body = (self.rfile.read(content_len)).decode('utf-8')
@@ -142,7 +163,6 @@ class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
             print("POSt", self.path)
             self.path = ""
             return http_server.SimpleHTTPRequestHandler.do_GET(self)
-
 
 
 handler = StartServer
