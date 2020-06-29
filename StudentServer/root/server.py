@@ -9,11 +9,6 @@ from database import StudentDatabase
 
 class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
 
-    def _set_headers(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
-        self.end_headers()
-
     def do_GET(self):
         """
         GET call service
