@@ -118,7 +118,7 @@ class StartServer(http_server.SimpleHTTPRequestHandler, StudentDatabase):
         if self.path == '/post_add_student':
             content_len = int(self.headers['Content-Length'])
             post_body = (self.rfile.read(content_len)).decode('utf-8')
-            request = {x[0] : x[1] for x in [x.split("=") for x in post_body.split("&") ]}
+            request = {x[0]: x[1] for x in [x.split("=") for x in post_body.split("&") ]}
             f_name = request["first_name"]
             l_name = request["last_name"]
             dob = request["date_of_birth"]

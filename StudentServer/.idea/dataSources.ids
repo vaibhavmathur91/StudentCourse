@@ -25,8 +25,11 @@
       <column name="course_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="student_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_StudentWeb_studentcourses_1" columns="course_id" ref-table="StudentWeb_course" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_StudentWeb_studentcourses_2" columns="student_id" ref-table="StudentWeb_student" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_StudentWeb_studentcourses_1" columns="course_id" ref-table="StudentWeb_course" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="0" deferrability="1"/>
+      <foreign-key name="#FAKE_StudentWeb_studentcourses_2" columns="student_id" ref-table="StudentWeb_student" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="0" deferrability="1"/>
+      <index name="StudentWeb_studentcourses_student_id_1e3cb3ec" unique="true" columns="student_id"/>
+      <index name="StudentWeb_studentcourses_course_id_21a52586" unique="true" columns="course_id"/>
+      <index name="StudentWeb_studentcourses_student_id_course_id_c14d8790_uniq" unique="true" columns="student_id,course_id"/>
     </table>
     <table name="sqlite_sequence" schema="" catalog="" type="TABLE"/>
   </data-source>
